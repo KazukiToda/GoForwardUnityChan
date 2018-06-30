@@ -10,11 +10,10 @@ public class CubeController : MonoBehaviour {
 	private float deadLine = -10;
 
 	AudioSource audioSource;
-	public AudioClip audioClip = new AudioClip();
 
 	// Use this for initialization
 	void Start(){
-		audioSource = gameObject.AddComponent<AudioSource> ();
+		audioSource = gameObject.GetComponent<AudioSource> ();
 	}
 
 	// Update is called once per frame
@@ -28,10 +27,8 @@ public class CubeController : MonoBehaviour {
 		}
 	}
 	void OnCollisionEnter2D(Collision2D other){
-		if (other.gameObject.name == "UnityChan2D") {
-			
-		} else {
-			audioSource.PlayOneShot (audioClip);
+		if (other.gameObject.tag != "UnityChan") {
+			audioSource.Play ();
 		}
 	}
 }
